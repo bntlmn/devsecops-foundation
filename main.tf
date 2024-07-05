@@ -1,4 +1,10 @@
 terraform {
+cloud {
+    organization = "fritz-mikko"
+    workspaces {
+      name = "workspace-mikko"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -14,10 +20,10 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-   ami           = "ami-0123c9b6bfb7eb962"
-   instance_type = "t2.micro"
+  ami           = "ami-0123c9b6bfb7eb962"
+  instance_type = "t2.micro"
 
-   tags = {
-        Name = var.instance_name
-   }
- }
+  tags = {
+    Name = var.instance_name
+  }
+}
